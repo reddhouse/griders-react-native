@@ -63,6 +63,7 @@ const styles = {
 const mapStateToProps = (state, ownProps) => {
   const expanded = state.selectedLibraryId === ownProps.library.id;
 
+  // ES6 same as: return { expanded: expanded };
   return { expanded };
 };
 

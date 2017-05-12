@@ -22,11 +22,16 @@ export const passwordChanged = (text) => {
   };
 };
 
+// ReduxThunk allows us to dispatch actions asynchronously
 export const loginUser = ({ email, password }) => {
+  // ReduxThunk action creators must return a function. and the function will be
+  // called with 'dispatch'
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
+      // one liner, without using a helper function
+      // .then(user => { dispatch({ type: LOGIN_USER_SUCCESS, payload: user });)
       .then(user => loginUserSuccess(dispatch, user))
       .catch((error) => {
         console.log(error);

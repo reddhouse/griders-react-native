@@ -17,6 +17,8 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case EMAIL_CHANGED:
+      // Return a new object with all the old state properties spread into it,
+      // and the email propery updated to new value
       return { ...state, email: action.payload };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };

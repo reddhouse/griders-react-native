@@ -73,6 +73,18 @@ const styles = {
   }
 };
 
+/* Same function without all the destructuring. I find it less readable if you
+don't see the word 'state' as a parameter (or you can't remember that
+mapStateToProps is called with state as it's first argument) */
+
+// const mapStateToProps = (state) => {
+//   return {
+//     email: state.auth.email,
+//     password: state.auth.password,
+//     error: state.auth.error,
+//     loading: state.auth.loading };
+// };
+
 const mapStateToProps = ({ auth }) => {
   const { email, password, error, loading } = auth;
 

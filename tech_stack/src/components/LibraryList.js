@@ -12,6 +12,8 @@ class LibraryList extends Component {
     this.dataSource = ds.cloneWithRows(this.props.libraries);
   }
 
+  // renderRow automatically exposed an "item" argument, which is the actual
+  // thing that we're rendering, one per row. We call it library here.
   renderRow(library) {
     return <ListItem library={library} />;
   }
@@ -30,4 +32,6 @@ const mapStateToProps = state => {
   return { libraries: state.libraries };
 };
 
+// Funny method signature calls connect with mapStateToProps argument and
+// immediately returns another function which we call with the LibraryList arg.
 export default connect(mapStateToProps)(LibraryList);

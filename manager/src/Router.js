@@ -5,6 +5,9 @@ import EmployeeList from './components/EmployeeList';
 import EmployeeCreate from './components/EmployeeCreate';
 import EmployeeEdit from './components/EmployeeEdit';
 
+/* Group our scenes into scene "buckets" and inside of a bucket, our router
+will automatically provide a back button for nested scenes */
+
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>

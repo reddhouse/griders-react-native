@@ -7,6 +7,9 @@ const Button = ({ onPress, children }) => {
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
       <Text style={textStyle}>
+        {/*This is a reference to props.children. Author was destructuring the
+          heck out of everything, which I find less readable. Note, we're using
+          children here to keep the button component ultra-resuable*/}
         {children}
       </Text>
     </TouchableOpacity>
