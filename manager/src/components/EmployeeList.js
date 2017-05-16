@@ -13,9 +13,13 @@ class EmployeeList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // nextProps are the next set of props that this component
-    // will be rendered with
+    // nextProps are the next set of props that this component will be rendered with
     // this.props is still the old set of props
+    // Using this lifecycle method is necessary because we have asynchronous
+    // code on one of our action creator/reducer combos. Note, we are also calling
+    // createDateaSource() from componentWillMount (above) to cover the case where we
+    // might navigate BACK to this component, in which case new props might not be
+    // needed or expected to arrive.
 
     this.createDataSource(nextProps);
   }
@@ -44,8 +48,10 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => {
+  // Convert object of employees to array of employees so ds.cloneWithRows will
+  // work correctly. Map returns a new array of objects like the example below.
   const employees = _.map(state.employees, (val, uid) => {
-    return { ...val, uid };
+    return { ...val, uid }; // { shift: 'Monday', name: 'Steve', id: 'ld8t4f' }
   });
 
   return { employees };

@@ -8,6 +8,8 @@ class EmployeeCreate extends Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
+    // Intial state for shift is an empty string, but thanks to loosey goosey
+    // javascript, it will evaluate to falsey, so we can use OR monday.
     this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
   }
 
